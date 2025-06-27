@@ -19,10 +19,15 @@ function renderTab(indexTab) {
 function keydownTab() {
     document.body.addEventListener("keydown", (e) => {
         let tab = tabs[e.key - 1]
-        tabs.forEach((t) => t.classList.remove("active"))
-        contents.forEach((c) => c.classList.remove("active"))
-        tab.classList.add("active")
-        document.getElementById(tab.dataset.tab).classList.add("active")
+
+        if (e.key - 1 < Array.from(tabs).length) {
+            tabs.forEach((t) => t.classList.remove("active"))
+            contents.forEach((c) => c.classList.remove("active"))
+            tab.classList.add("active")
+            document.getElementById(tab.dataset.tab).classList.add("active")
+        } else {
+            return
+        }
     })
 }
 renderTab()

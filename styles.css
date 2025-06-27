@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     padding: 40px;
@@ -132,4 +136,106 @@ label.checkbox input[type="checkbox"]:indeterminate::after {
 
 .tab-content.active {
     display: block;
+}
+/* Slideshow */
+.slideshow-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 40px auto;
+    overflow: hidden;
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+.controls button {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.controls button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+.slide {
+    opacity: 0;
+    /* transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); */
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+.slide-in-right {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+.slide-in-left {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+.slide-out-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+}
+.slide-out-right {
+    opacity: 0;
+    transform: translateX(100%);
+    z-index: 1;
+}
+/* Pagination */
+.pagination {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    translate: -50%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    z-index: 999;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.dot.active {
+    background: #222;
 }
